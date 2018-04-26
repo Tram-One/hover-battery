@@ -1,0 +1,45 @@
+{
+  "name": "hover-battery",
+  "version": "1.0.0",
+  "description": "LocalStorage / SessionStorage Memory for your Hover-Engine Store",
+  "main": "hover-battery.js",
+  "scripts": {
+    "lint": "xo",
+    "server-test": "jasmine tests/specs/hover-battery-spec.js",
+    "browser-test": "jasmine tests/specs/sessionStorage-spec.js",
+    "test": "npm run server-test && npm run browser-test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tram-One/hover-battery.git"
+  },
+  "keywords": [
+    "tram-one",
+    "localStorage",
+    "sessionStorage",
+    "hover-engine",
+    "state",
+    "management",
+    "redux"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Tram-One/hover-battery/issues"
+  },
+  "homepage": "https://github.com/Tram-One/hover-battery#readme",
+  "devDependencies": {
+    "budo": "^11.2.0",
+    "eslint-config-tram-one": "^2.0.0",
+    "hover-engine": "^1.3.1",
+    "jasmine": "^3.1.0",
+    "nightmare": "^3.0.1",
+    "testem": "^2.4.0",
+    "xo": "^0.20.3"
+  },
+  "xo": {
+    "extends": [
+      "tram-one"
+    ]
+  }
+}
