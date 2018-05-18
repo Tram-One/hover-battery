@@ -17,6 +17,14 @@ describe('hover-battery', () => {
       expect(engine.store.todos).toEqual(['write tests'])
       expect(engine.store.timers).toEqual({email: true, work: false, break: true})
     })
+    it('should ignore default values that can\'t be parsed', () => {
+      objectStorage = {votes: 'INFO', todos: 'undefined', timers: '{"email": true, "work": false, "break": true}'}
+      engine.addActions(battery(objectStorage).actions)
+
+      expect(engine.store.votes).toEqual(0)
+      expect(engine.store.todos).toEqual([])
+      expect(engine.store.timers).toEqual({email: true, work: false, break: true})
+    })
     it('should write to the storage object', () => {
       engine.addListener(battery(objectStorage).listener)
       engine.actions.up()
