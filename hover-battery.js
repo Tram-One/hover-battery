@@ -3,7 +3,9 @@
 const safeParse = (value) => {
   try {
     return JSON.parse(value)
-  } catch (error) { }
+  } catch (error) {
+    console.warn(`hover-battery could not parse ${value}`)
+  }
 }
 
 // helper function - builds a single init action group
