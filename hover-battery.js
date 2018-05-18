@@ -1,11 +1,23 @@
 
+// helper function - parses if we can, otherwise, return undefined
+const safeParse = (value) => {
+  try {
+    return JSON.parse(value)
+  } catch (error) {
+    console.warn(`hover-battery could not parse ${value}`)
+  }
+}
+
 // helper function - builds a single init action group
-const buildInitAction = (storeName, initValue) => ({[storeName]: {init: () => initValue}})
+const buildInitAction = (storeName, initValue) => {
+  if (initValue) return {[storeName]: {init: () => initValue}}
+  return {}
+}
 
 // helper function - adds all the init actions for each store
 const addInitActions = (storage) => (memory, key) => {
   const value = (storage.getItem === undefined) ? storage[key] : storage.getItem(key)
-  return Object.assign({}, memory, buildInitAction(key, JSON.parse(value)))
+  return Object.assign({}, memory, buildInitAction(key, safeParse(value)))
 }
 
 /**
